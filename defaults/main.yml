@@ -1,0 +1,8 @@
+---
+gandyn_api_key: ''
+gandyn_domain_name: ''
+gandyn_record_TTL: 300
+gandyn_record_type: 'A'
+gandyn_record_name: '@'
+gandyn_log_level: logging.INFO
+gandyn_log_file: '/var/log/gandyn.log'

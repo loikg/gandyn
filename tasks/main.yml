@@ -1,0 +1,24 @@
+---
+
+- name: Downloader Gandyn sources
+  unarchive: src=https://github.com/Chralu/gandyn/tarball/0.1
+             dest=/tmp/gandyn
+             remote_src=True
+
+- name: Install Gandyn
+  shell: python setup.py install
+  args: chdir=/tmp/gandyn
+
+- name: Make Gandyn executable
+  file: src=/usr/local/bin/gandyn.py
+        mode='+x'
+
+- name: Copy config file
+  template: src=gandyn.conf.j2
+            dest=/etc/gandyn/gandyn.conf
+
+- name: Setup cron job
+  cron: name='gandyn'
+        minute='5'
+        job='/usr/local/bin/gandyn.py --config /etc/gandyn/gandyn.conf'
+        
