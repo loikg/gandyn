@@ -1,8 +1,12 @@
 ---
 
-- name: Install unzip
-  apt: name=unzip
+- name: Install dependencies
+  apt: name={{item}}
        state=latest
+  with_item:
+  - unzip
+  - python3
+  - python3-pip
 
 - name: Download and unarchive Gandyn
   unarchive: src=https://github.com/Chralu/gandyn/archive/master.zip
