@@ -3,7 +3,7 @@
 - name: Install dependencies
   apt: name={{item}}
        state=latest
-  with_item:
+  with_items:
   - unzip
   - python3
   - python3-pip
