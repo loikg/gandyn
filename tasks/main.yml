@@ -1,5 +1,9 @@
 ---
 
+- name: Install unzip
+  apt: name=unzip
+       state=latest
+
 - name: Download and unarchive Gandyn
   unarchive: src=https://github.com/Chralu/gandyn/archive/master.zip
              dest=/tmp
