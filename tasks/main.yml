@@ -10,7 +10,7 @@
              remote_src=yes
 
 - name: Install Gandyn
-  shell: python setup.py install
+  shell: python3 setup.py install
   args:
     chdir: /tmp/gandyn-master/src
 
