@@ -1,17 +1,22 @@
 ---
 
-- name: Downloader Gandyn sources
-  unarchive: src=https://github.com/Chralu/gandyn/tarball/0.1
-             dest=/tmp/gandyn
-             remote_src=True
+- name: Download and unarchive Gandyn
+  unarchive: src=https://github.com/Chralu/gandyn/archive/master.zip
+             dest=/tmp
+             remote_src=yes
 
 - name: Install Gandyn
   shell: python setup.py install
-  args: chdir=/tmp/gandyn
+  args:
+    chdir: /tmp/gandyn-master/src
+
+- name: Mkdir /etc/gandyn
+  file: name=/etc/gandyn
+        state=directory
 
 - name: Make Gandyn executable
-  file: src=/usr/local/bin/gandyn.py
-        mode='+x'
+  file: path=/usr/local/bin/gandyn.py
+        mode='u+x,o+x,g+x'
 
 - name: Copy config file
   template: src=gandyn.conf.j2
