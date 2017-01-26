@@ -3,7 +3,7 @@ galaxy_info:
   description: A role to install and configure Gandyn
 #  company: your company (optional)
 
-  license: license (GPLv2, CC-BY, etc)
+  license: The Unlicensed
 
   min_ansible_version: 1.2
 
