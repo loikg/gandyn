@@ -33,5 +33,4 @@
 - name: Setup cron job
   cron: name='gandyn'
         minute='5'
-        job='/usr/local/bin/gandyn.py --config /etc/gandyn/gandyn.conf'
-        
+        job='/usr/local/bin/gandyn.py --config /etc/gandyn/gandyn.conf' 

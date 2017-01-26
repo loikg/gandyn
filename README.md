@@ -1,38 +1,49 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This simple role allow you to install [Gandyn](https://github.com/Chralu/gandyn). Gandyn is a simple python script to connect to [Gandi](https://www.gandi.net/) domain name  API and automatically refresh zone entries. Allowing you to setup a dynamic DNS. This extremly useful when you don't have a fix public IP address.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+A Gandi API key. Follow this [link](https://wiki.gandi.net/en/xml-api/activate) if you don't have one.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+This all the variables you can tweak and theire default values.
+
+```
+gandyn_api_key: '' #your Gandi API key to connect to the API
+gandyn_domain_name: '' #the domain name you want to update entries of.
+gandyn_record_TTL: 300 
+gandyn_record_type: 'A'
+gandyn_record_name: '@'
+gandyn_log_level: logging.INFO
+gandyn_log_file: '/var/log/gandyn.log'
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
+```
     - hosts: servers
+      vars:
+	   - gandyn_api_key: "xxxxxxxxxxxx"
+	   - gandyn_domain_name: "domain.tld"
+	   - gandyn_record_name: "subdomain"
       roles:
-         - { role: username.rolename, x: 42 }
+         - loikg.gandyn
+```
 
 License
 -------
 
 BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
