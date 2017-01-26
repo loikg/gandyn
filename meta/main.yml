@@ -132,7 +132,7 @@ galaxy_info:
   #  - xenial
   #  - yakkety
   - name: Debian
-  #  versions:
+    versions:
   #  - all
   #  - etch
     - jessie
